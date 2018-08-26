@@ -1,4 +1,4 @@
-package com.techprimers.springbatchexample1.model;
+package com.techprimers.springbatchexample1.entity;
 
 import java.util.Date;
 

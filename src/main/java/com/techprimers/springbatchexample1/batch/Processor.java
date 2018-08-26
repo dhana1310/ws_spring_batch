@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.stereotype.Component;
 
-import com.techprimers.springbatchexample1.model.User;
+import com.techprimers.springbatchexample1.entity.User;
 
 @Component
 public class Processor implements ItemProcessor<User, User> {
@@ -23,11 +23,12 @@ public class Processor implements ItemProcessor<User, User> {
 
     @Override
     public User process(User user) throws Exception {
-        String deptCode = user.getDept();
+        /*String deptCode = user.getDept();
         String dept = DEPT_NAMES.get(deptCode);
         user.setDept(dept);
-        user.setTime(new Date());
-        System.out.println(String.format("Converted from [%s] to [%s]", deptCode, dept));
+        user.setTime(new Date());*/
+    	user.setSalary(user.getSalary() + 5000);
+    	System.err.println("In processor - "+ user);
         return user;
     }
 }

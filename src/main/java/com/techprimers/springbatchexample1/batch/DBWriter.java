@@ -1,6 +1,6 @@
 package com.techprimers.springbatchexample1.batch;
 
-import com.techprimers.springbatchexample1.model.User;
+import com.techprimers.springbatchexample1.entity.User;
 import com.techprimers.springbatchexample1.repository.UserRepository;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class DBWriter implements ItemWriter<User> {
     @Override
     public void write(List<? extends User> users) throws Exception {
 
-        System.out.println("Data Saved for Users: " + users);
+    	System.err.println("In Writer");
         userRepository.save(users);
     }
 }
