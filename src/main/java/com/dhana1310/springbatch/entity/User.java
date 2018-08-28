@@ -22,11 +22,11 @@ public class User {
 
 	@Override
 	public String toString() {
-		final StringBuffer sb = new StringBuffer("User{");
+		final StringBuilder  sb = new StringBuilder ("User{");
 		sb.append("id=").append(id);
 		sb.append(", name='").append(name).append('\'');
 		sb.append(", dept='").append(dept).append('\'');
-		sb.append(", salary=").append(salary + "\ntime=" + time);
+		sb.append(", salary=").append(salary + ", time='" + time+"'");
 		sb.append('}');
 		return sb.toString();
 	}

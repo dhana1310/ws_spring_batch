@@ -1,4 +1,4 @@
-package com.dhana1310.springbatch.batch;
+package com.dhana1310.springbatch.batch.processor;
 
 import java.util.Date;
 import java.util.HashMap;
