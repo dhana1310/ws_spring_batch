@@ -8,7 +8,6 @@ import org.springframework.batch.item.ItemProcessor;
 import org.springframework.stereotype.Component;
 
 import com.dhana1310.springbatch.entity.User;
-import com.dhana1310.springbatch.listener.JobListener;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,11 +26,13 @@ public class BatchProcessor implements ItemProcessor<User, User> {
 
     @Override
     public User process(User user) throws Exception {
-       /* String deptCode = user.getDept();
+        String deptCode = user.getDept();
         String dept = DEPT_NAMES.get(deptCode);
         user.setDept(dept);
-        user.setTime(new Date());*/
+        user.setTime(new Date());
+        
     	user.setSalary(user.getSalary() + 5000);
+        
     	log.info("In processor - "+ user);
         return user;
     }

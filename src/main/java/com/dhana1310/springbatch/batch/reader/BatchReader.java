@@ -13,7 +13,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Component;
 
 import com.dhana1310.springbatch.entity.User;
-import com.dhana1310.springbatch.listener.JobListener;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,7 +25,7 @@ public class BatchReader {
 
 	@Bean
 	public JdbcCursorItemReader<User> readerFromDB(DataSource dataSource) {
-		JdbcCursorItemReader<User> reader = new JdbcCursorItemReader<User>();
+		JdbcCursorItemReader<User> reader = new JdbcCursorItemReader<>();
 		reader.setDataSource(dataSource);
 		reader.setSql("SELECT * FROM user");
 		reader.setRowMapper(new BeanPropertyRowMapper<>(User.class));
@@ -38,13 +37,14 @@ public class BatchReader {
 	//@Bean
 	public FlatFileItemReader<User> reader() {
 
-		return new FlatFileItemReaderBuilder<User>().name("personItemReader")
+		BeanWrapperFieldSetMapper<User> fieldSetterMapper = new BeanWrapperFieldSetMapper<>();
+		fieldSetterMapper.setTargetType(User.class);
+		
+		return new FlatFileItemReaderBuilder<User>().name("userItemReader")
 				// .resource(new ClassPathResource("users.csv"))
-				.resource(resource).delimited().names(new String[] { "id", "name", "dept", "salary" }).linesToSkip(1)
-				.fieldSetMapper(new BeanWrapperFieldSetMapper<User>() {
-					{
-						setTargetType(User.class);
-					}
-				}).build();
+				.resource(resource).delimited().names(new String[] { "id", "name", "dept", "salary" })
+				.linesToSkip(1)
+				.fieldSetMapper(fieldSetterMapper)
+				.build();
 	}
 }

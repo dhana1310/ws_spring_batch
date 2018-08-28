@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import com.dhana1310.springbatch.entity.User;
-import com.dhana1310.springbatch.listener.JobListener;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,7 +21,7 @@ public class BatchWriter {
   		
   		log.info("In Writer new bean");
   		return new JdbcBatchItemWriterBuilder<User>().dataSource(dataSource)
-  	//	.sql("INSERT INTO user ( name, dept, salary, time) VALUES (:name, :dept, :salary, :time)")
+  		//.sql("INSERT INTO user ( name, dept, salary, time) VALUES ( :name, :dept, :salary, :time)")
   		.sql("UPDATE user SET salary = :salary WHERE id = :id")
   		.itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<User>())
   		.build();

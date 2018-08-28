@@ -40,7 +40,7 @@ public class SpringBatchConfig {
 
 	@Bean
 	public Job job(JobBuilderFactory jobBuilderFactory) {
-		return jobBuilderFactory.get("ETL-Load")
+		return jobBuilderFactory.get("First-Job")
 				.incrementer(new RunIdIncrementer())
 				.listener(listener)
 				.start(getStepOne()).build();
@@ -49,7 +49,7 @@ public class SpringBatchConfig {
 	@Bean
 	public Step getStepOne() {
 
-		return stepBuilderFactory.get("ETL-file-load")
+		return stepBuilderFactory.get("First-Step")
 				.<User, User>chunk(100)
 				.reader(itemReader)
 				.processor(itemProcessor)
