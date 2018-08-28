@@ -1,4 +1,4 @@
-package com.techprimers.springbatchexample1.entity;
+package com.dhana1310.springbatch.entity;
 
 import java.util.Date;
 

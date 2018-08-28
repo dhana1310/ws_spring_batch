@@ -1,4 +1,4 @@
-package com.techprimers.springbatchexample1.listener;
+package com.dhana1310.springbatch.listener;
 
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
@@ -21,7 +21,6 @@ public class JobListener extends JobExecutionListenerSupport {
 	public void afterJob(JobExecution jobExecution) {
 		if(jobExecution.getStatus() == BatchStatus.COMPLETED) {
 			log.info("!!! JOB FINISHED! Time to verify the results");
-
 			
 		}
 	}
