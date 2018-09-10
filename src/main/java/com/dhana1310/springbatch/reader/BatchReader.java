@@ -1,4 +1,4 @@
-package com.dhana1310.springbatch.batch.reader;
+package com.dhana1310.springbatch.reader;
 
 import javax.sql.DataSource;
 

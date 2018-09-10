@@ -1,4 +1,4 @@
-package com.dhana1310.springbatch.batch.writer;
+package com.dhana1310.springbatch.writer;
 
 import javax.sql.DataSource;
 
